@@ -1,0 +1,119 @@
+{
+        //%*****************************配置编译语言*********************************%//
+    "latex-workshop.showContextMenu": true, //启用上下文LaTeX菜单
+    "latex-workshop.intellisense.package.enabled": true, //根据加载的包，自动完成命令或包
+    "latex-workshop.latex.recipe.default": "lastUsed", //默认使用上次使用的编译方法. 这个是非常好用的特别是对于需要使用xelatex编译中文文档和pdflatex编译英文文档的用户
+    "latex-workshop.latex.build.enableMagicComments": false, //如果魔法注释定义了TeX命令，则使用魔法注释而不是默认配方。魔法注释： 
+    // % !TeX program = xelatex
+    // 把上面的魔法注释放在tex文件的第一行，那么这个tex文件就会使用xelatex编译，除非你手动更改编译方法
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "tools": [
+                "bibtex"
+            ]
+        },
+        {
+            "name": "xelatex ->bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdflatex ->bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    // 清除辅助文件
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    //%*****************************配置正反搜索*********************************%//
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "C:/Users/Lenovo/AppData/Local/SumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "-reuse-instance",
+        "-inverse-search",
+        "\"F:/Microsoft VS Code/bin/code.cmd\" --reuse-window --goto \"%f:%l\"",
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "C:/Users/Lenovo/AppData/Local/SumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-forward-search",
+        "%TEX%",
+        "%LINE%",
+        "-reuse-instance",
+        "-inverse-search",
+        "\"F:/Microsoft VS Code/bin/code.cmd\" --reuse-window --goto \"%f:%l\"",
+        "%PDF%"
+    ],
+}
